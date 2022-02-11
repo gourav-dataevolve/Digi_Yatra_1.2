@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_25sdp"
+    android:background="#002E56"
+    tools:context=".fragments.PopIssuerDialog">
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/identity_credential_issuer"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginBottom="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="@id/recycler"
+        app:layout_constraintBottom_toTopOf="@id/recycler" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_rounded_corner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="@dimen/_17sdp"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="#002E56"
+        app:layout_constraintTop_toTopOf="@id/textView21"
+        app:layout_constraintEnd_toEndOf="@id/recycler"
+        app:srcCompat="@drawable/ic_baseline_info_white" />
+<!--
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_digi_yatra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_rounded_corner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/rectangle_68" />
+        <TextView
+            android:id="@+id/txt_phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/digi_yatra"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_forward"
+            app:tint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageView10" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+</androidx.constraintlayout.widget.ConstraintLayout>

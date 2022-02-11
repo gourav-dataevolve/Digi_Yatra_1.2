@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_con"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_148sdp"
+            android:layout_marginBottom="@dimen/_424sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Hello!"
+            android:textColor="#002E56"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.034" />
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/slider"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginStart="@dimen/_17sdp"
+            android:layout_marginTop="@dimen/_107sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_300sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorEnabled="true"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="1">
+
+        </com.smarteist.autoimageslider.SliderView>
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="@dimen/_223sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_22sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:fontFamily="@font/poppins_light"
+            android:text="The process only takes a few minutes to set your upcoming travel."
+            android:textColor="#000000"
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_23sdp"
+            android:layout_marginEnd="@dimen/_106sdp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Your Upcoming Travel"
+            android:textColor="#000000"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/dotBTN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/dotBTN"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_46sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_140sdp"
+            android:background="#ffffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/dotted_border" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_17sdp"
+            android:layout_marginEnd="@dimen/_145sdp"
+            android:layout_marginBottom="@dimen/_7sdp"
+            android:fontFamily="@font/poppins_medium"
+
+            android:text="Avil Services"
+            android:textColor="#000000"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dotBTN"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_57sdp"
+            android:layout_marginStart="@dimen/_17sdp"
+            android:layout_marginTop="@dimen/_37sdp"
+            android:layout_marginEnd="@dimen/_29sdp"
+            android:layout_marginBottom="@dimen/_39sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dotBTN"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/blue_background_square" />
+
+        <ImageButton
+            android:id="@+id/imageButton11"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_33sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton7"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton7"
+            app:layout_constraintStart_toStartOf="@+id/imageButton7"
+            app:layout_constraintTop_toTopOf="@+id/imageButton7"
+            app:srcCompat="@drawable/ic_directions_car" />
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_57sdp"
+            android:layout_marginStart="@dimen/_215sdp"
+            android:layout_marginTop="@dimen/_37sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_39sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dotBTN"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/blue_background_square" />
+
+        <ImageButton
+            android:id="@+id/imageButton9"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_57sdp"
+            android:layout_marginStart="@dimen/_116sdp"
+            android:layout_marginTop="@dimen/_37sdp"
+            android:layout_marginEnd="@dimen/_29sdp"
+            android:layout_marginBottom="@dimen/_39sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dotBTN"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/blue_background_square" />
+
+        <ImageView
+            android:id="@+id/floatingActionButton"
+            android:layout_width="@dimen/_21sdp"
+            android:layout_height="@dimen/_21sdp"
+            android:layout_marginStart="@dimen/_119sdp"
+            android:layout_marginTop="@dimen/_17sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:background="#ffffff"
+            android:backgroundTint="#ffffff"
+            android:clickable="true"
+            app:layout_constraintBottom_toTopOf="@+id/dotBTN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView47"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/add_plus_symbol2" />
+
+        <ImageButton
+            android:id="@+id/imageButton12"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton8"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton8"
+            app:layout_constraintStart_toStartOf="@+id/imageButton8"
+            app:layout_constraintTop_toTopOf="@+id/imageButton8"
+            app:srcCompat="@drawable/ic_directions_car" />
+
+        <ImageButton
+            android:id="@+id/imageButton13"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="#EBF3FC"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton9"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton9"
+            app:layout_constraintStart_toStartOf="@+id/imageButton9"
+            app:layout_constraintTop_toTopOf="@+id/imageButton9"
+            app:srcCompat="@drawable/ic_baseline_wifi_24" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_57sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_58sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:text="No upcoming travel"
+            android:textColor="#979797"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/dotBTN"
+            app:layout_constraintEnd_toEndOf="@+id/dotBTN"
+            app:layout_constraintStart_toStartOf="@+id/dotBTN"
+            app:layout_constraintTop_toTopOf="@+id/dotBTN" />
+
+        <Button
+            android:id="@+id/ShareBtn"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_marginStart="@dimen/_136sdp"
+            android:layout_marginTop="@dimen/_54sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:backgroundTint="#002E56"
+            android:text="Share"
+            android:textSize="@dimen/_5ssp"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="@+id/dotBTN"
+            app:layout_constraintEnd_toEndOf="@+id/dotBTN"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/dotBTN"
+            app:layout_constraintTop_toTopOf="@+id/dotBTN"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton15"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#292B76"
+            app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton"
+            app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
+            app:layout_constraintStart_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintTop_toTopOf="@+id/floatingActionButton"
+            app:layout_constraintVertical_bias="0.357"
+            app:srcCompat="@drawable/add_plus_symbol" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Cabs"
+            android:textColor="#000000"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton7"
+            app:layout_constraintStart_toStartOf="@+id/imageButton7"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_minus5sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Texi"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton8"
+            app:layout_constraintStart_toStartOf="@+id/imageButton8"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton8"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView82"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Wifi"
+            android:textColor="@color/black"
+
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton9"
+            app:layout_constraintStart_toStartOf="@+id/imageButton9"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton9"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
