@@ -134,7 +134,6 @@ public class Alomst_done extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Intent intent =new Intent(Alomst_done.this, Camera_Profile.class);
             photoBitmap = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             photoBitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);

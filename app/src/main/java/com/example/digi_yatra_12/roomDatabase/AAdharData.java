@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.model.IssuersVerifier;
+
 import org.json.JSONObject;
 
 @Entity(tableName = "aadhar_data")
@@ -14,15 +16,15 @@ public class AAdharData {
     private String issuerDID = "";
     private String issuerName = "";
     private String type = "";
-    private JSONObject previousShowedData ;
+    private IssuersVerifier issuersVerifier ;
 
-    public AAdharData(int id, JSONObject json, String issuerDID, String issuerName, String type, JSONObject previousShowedData) {
+    public AAdharData(int id, JSONObject json, String issuerDID, String issuerName, String type, IssuersVerifier issuersVerifier) {
         this.id = id;
         this.json = json;
         this.issuerDID = issuerDID;
         this.issuerName = issuerName;
         this.type = type;      //TODO credentialType":"IdentityCredential",
-        this.previousShowedData = previousShowedData;   //TODO responseFiledsForUser from the connectionDB
+        this.issuersVerifier = issuersVerifier;   //TODO responseFiledsForUser from the connectionDB
     }
 
     public int getId() {
@@ -65,11 +67,11 @@ public class AAdharData {
         this.type = type;
     }
 
-    public JSONObject getPreviousShowedData() {
-        return previousShowedData;
+    public IssuersVerifier getIssuersVerifier() {
+        return issuersVerifier;
     }
 
-    public void setPreviousShowedData(JSONObject previousShowedData) {
-        this.previousShowedData = previousShowedData;
+    public void setIssuersVerifier(IssuersVerifier issuersVerifier) {
+        this.issuersVerifier = issuersVerifier;
     }
 }

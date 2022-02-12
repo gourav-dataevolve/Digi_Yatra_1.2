@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
@@ -11,6 +12,9 @@ import androidx.annotation.RequiresApi;
 
 import com.example.digi_yatra_12.activities.PopAcknowledgementDialogActivity;
 import com.example.digi_yatra_12.fragments.Camera_profile2;
+import com.example.digi_yatra_12.roomDatabase.AadharDatabase;
+import com.example.digi_yatra_12.roomDatabase.ConnectionDB;
+import com.google.gson.JsonObject;
 
 import org.hyperledger.aries.api.Handler;
 import org.json.JSONException;
@@ -28,8 +32,9 @@ public class MyHandler implements Handler {
     }
 
     public String getLastNotification() {
-        return lastTopic+"\n"+lastMessage;
+        return lastTopic + "\n" + lastMessage;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @SuppressLint("LongLogTag")
     @Override
@@ -54,10 +59,8 @@ public class MyHandler implements Handler {
                         myEdit.putString("connection_id", connectionId);
                         myEdit.apply();
                         myEdit.commit();//Todo why are we saving in shared preference
-                        Intent intent = new Intent(context, PopAcknowledgementDialogActivity.class);
-                        intent.putExtra("connectionId", connectionId);
-                        context.startActivity(intent);
-
+                        GetConnectionData getConnectionData = new GetConnectionData(connectionId);
+                        getConnectionData.execute();
                     }
                 }
 /*
@@ -106,12 +109,12 @@ public class MyHandler implements Handler {
                 JSONObject jsonObject = new JSONObject(lastMessage);
                 String type = jsonObject.getJSONObject("message").getJSONObject("Message").getString("@type");
                 if (type.equals("https://didcomm.org/issue-credential/2.0/offer-credential")) {
-                }
-                else if (type.equals("https://didcomm.org/issue-credential/2.0/issue-credential")) {
+                } else if (type.equals("https://didcomm.org/issue-credential/2.0/issue-credential")) {
+                    String myDid = jsonObject.getJSONObject("message").getJSONObject("Properties").getString("myDID");
+                    //fetch information from database using myDID from connection database and fetch field "responseFiledsForUser" and show this field in screen no 55
+                    GetConnectionDataByMyDid getConnectionDataByMyDid = new GetConnectionDataByMyDid(myDid);
+                    getConnectionDataByMyDid.execute();
 
-                    Intent intent = new Intent(context, Camera_profile2.class);
-                    intent.putExtra("json", lastMessage);
-                    context.startActivity(intent);             //TODo fetch information from database using myDID from connection database and fetch field "responseFiledsForUser" and show this field in screen no 55
                     //show screen no 19
                    /* { show this data in screen number 19
 
@@ -174,6 +177,74 @@ public class MyHandler implements Handler {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
         }
     }
+
+    private class GetConnectionData extends AsyncTask<Void, Void, Void> {
+        String connectionId;
+        ConnectionDB connectionDB;
+        String issuersVerifier;
+        Intent intent;
+
+        GetConnectionData(String connectionId) {
+            this.connectionId = connectionId;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            connectionDB = AadharDatabase.getInstance(context).Dao().getConnectionData(connectionId);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            super.onPostExecute(unused);
+            if (connectionDB != null) {
+                issuersVerifier = connectionDB.getJson().toString();
+                intent = new Intent(context, PopAcknowledgementDialogActivity.class);
+                intent.putExtra("issuer_verifier", issuersVerifier);
+                context.startActivity(intent);
+            }
+
+        }
+    }
+       private class GetConnectionDataByMyDid extends AsyncTask<Void, Void, Void> {
+        String myDid;
+        ConnectionDB connectionDB;
+        String issuersVerifier;
+        Intent intent;
+
+        GetConnectionDataByMyDid(String myDid) {
+            this.myDid = myDid;
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            connectionDB = AadharDatabase.getInstance(context).Dao().getConnectionDataByMyDid(myDid);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            super.onPostExecute(unused);
+            if (connectionDB != null) {
+                intent = new Intent(context, Camera_profile2.class);
+                intent.putExtra("json", lastMessage);
+                issuersVerifier = connectionDB.getJson().toString();
+                intent.putExtra("issuersVerifier", issuersVerifier);
+                context.startActivity(intent);
+            }
+
+        }
+    }
+
+
 }

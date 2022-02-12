@@ -24,7 +24,7 @@ public abstract class AadharDatabase extends RoomDatabase {
                             AadharDatabase.class, "aadhar_data")
                             .fallbackToDestructiveMigration()
                             .addCallback(roomCallback)
-                    //.allowMainThreadQueries()
+                            .allowMainThreadQueries()
                             .build();
         }
         return instance;

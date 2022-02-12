@@ -17,10 +17,6 @@ import com.example.digi_yatra_12.databinding.FragmentHomeFragmentBinding;
 
 public class HomeFragment extends Fragment {
 FragmentHomeFragmentBinding binding;
-    Button add;
-    Layout add1;
-    WalletFragment firstfragment;
-    Home_fragment2 secondFragment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,12 +37,5 @@ FragmentHomeFragmentBinding binding;
         super.onDestroy();
         binding=null;
     }
-//    private void changeFragment(Fragment fr){
-//        FrameLayout fl = (FrameLayout) findViewById(R.id.mainframe);
-//        fl.removeAllViews();
-//        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
-//        transaction1.add(R.id.mainframe, fr);
-//        transaction1.commit();
-//    }
 }
 

@@ -6,10 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.digi_yatra_12.GlobalApplication;
 import com.example.digi_yatra_12.R;
-import com.example.digi_yatra_12.navbar.Navbar_main;
-import com.example.util.MyHandler;
+import com.example.digi_yatra_12.navbar.NavbarMainActivity;
 
 
 public class Otp_page extends  AppCompatActivity {
@@ -22,7 +20,7 @@ public class Otp_page extends  AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Otp_page.this, Navbar_main.class));
+                startActivity(new Intent(Otp_page.this, NavbarMainActivity.class));
             }
         });
     }

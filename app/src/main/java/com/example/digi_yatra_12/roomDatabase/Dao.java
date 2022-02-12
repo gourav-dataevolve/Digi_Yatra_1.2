@@ -19,4 +19,6 @@ public interface Dao {
     void updateConnection(ConnectionDB connectionDB);
     @Query("SELECT * FROM connection_db WHERE connection_id = :connectionId LIMIT 1")
     ConnectionDB getConnectionData(String connectionId);
+    @Query("SELECT * FROM connection_db WHERE myDID = :myDid LIMIT 1")
+    ConnectionDB getConnectionDataByMyDid(String myDid);
 }

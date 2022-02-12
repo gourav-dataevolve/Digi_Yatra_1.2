@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/background_blue" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/full_name_1"
         android:layout_width="@dimen/_248sdp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
@@ -140,7 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_1"
         app:layout_constraintVertical_bias="0.529" />
 
     <TextView

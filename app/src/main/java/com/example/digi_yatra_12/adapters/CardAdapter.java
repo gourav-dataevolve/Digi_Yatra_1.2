@@ -1,0 +1,109 @@
+package com.example.digi_yatra_12.adapters;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.digi_yatra_12.R;
+import com.example.digi_yatra_12.roomDatabase.AAdharData;
+import com.example.util.MyUtils;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder>{
+    Context context;
+    List<AAdharData> aAdharDataList;
+    CardClick cardClick;
+    public CardAdapter(Context context, List<AAdharData> aAdharDataList, CardClick cardClick) {
+        this.context = context;
+        this.aAdharDataList = aAdharDataList;
+        this.cardClick = cardClick;
+    }
+
+    @NonNull
+    @Override
+    public CardHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View listItem= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cards, parent, false);
+        CardHolder cardHolder = new CardHolder(listItem);
+        return cardHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CardHolder holder, int position) {
+        // holder.issuerLogo.setImageBitmap(MyUtils.StringToBitMap(aAdharDataList.get(position).));
+        //holder.txtNameValue.setText(aAdharDataList.get(position));
+        JSONObject jsonObject = aAdharDataList.get(position).getJson();
+        holder.txtIdentity.setText(aAdharDataList.get(position).getIssuersVerifier().getCredentialType());
+        try {
+            holder.txtNameKey.setText(aAdharDataList.get(position).getIssuersVerifier().getResponseFiledsForUser().getFullName());
+            holder.txtNameValue.setText(aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("givenName"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            holder.txtAadhaarValue.setText(aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("idNumber"));
+            holder.txtAadhaarKey.setText(aAdharDataList.get(position).getIssuersVerifier().getResponseFiledsForUser().getIdType());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            holder.txtIdTypeValue.setText(aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("idType"));
+            holder.txtIdTypeKey.setText(aAdharDataList.get(position).getIssuersVerifier().getResponseFiledsForUser().getIdNumber());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            String face64 =  aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("faceB64");
+            Bitmap bm = MyUtils.StringToBitMap(face64);
+            if (bm != null)
+                holder.imgPhoto.setImageBitmap(bm);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return aAdharDataList.size();
+    }
+
+    public class CardHolder extends RecyclerView.ViewHolder{
+        TextView txtIdentity;
+        TextView txtNameKey, txtNameValue;
+        TextView txtAadhaarKey, txtAadhaarValue;
+        TextView txtIdTypeKey, txtIdTypeValue;
+        ImageView imgPhoto;
+        public CardHolder(@NonNull View itemView) {
+            super(itemView);
+            txtIdentity = itemView.findViewById(R.id.txt_identity1);
+            txtNameKey = itemView.findViewById(R.id.full_name);
+            txtNameValue = itemView.findViewById(R.id.full_name1);
+            txtAadhaarKey = itemView.findViewById(R.id.id_number);
+            txtAadhaarValue = itemView.findViewById(R.id.id_number1);
+            txtIdTypeKey = itemView.findViewById(R.id.id_type);
+            txtIdTypeValue = itemView.findViewById(R.id.id_type1);
+            imgPhoto = itemView.findViewById(R.id.img_photo);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cardClick.onCardClick(aAdharDataList.get(getAdapterPosition()), itemView);
+                }
+            });
+        }
+    }
+    public interface CardClick{
+        void onCardClick(AAdharData aAdharData, View view);
+    }
+}

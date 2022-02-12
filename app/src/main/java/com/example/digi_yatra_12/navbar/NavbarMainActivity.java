@@ -16,7 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.digi_yatra_12.BaseClass;
 import com.example.digi_yatra_12.GlobalApplication;
 import com.example.digi_yatra_12.R;
 import com.example.digi_yatra_12.fragments.WalletFragment;
@@ -35,7 +34,7 @@ import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 
-public class Navbar_main extends AppCompatActivity {
+public class NavbarMainActivity extends AppCompatActivity {
     ToolTipsManager toolTipsManager;
     private View walletButton;
     private ConstraintLayout constraintLayout, semiTransparent;
@@ -52,6 +51,8 @@ public class Navbar_main extends AppCompatActivity {
         if (isFirstTime) {
             SharedPreferences.Editor myEdit = sharedPreferences.edit();
             myEdit.putBoolean("is_first_time",false);
+            myEdit.apply();
+            myEdit.commit();
             semiTransparent.setVisibility(View.VISIBLE);
             showToolTip();
             bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -176,6 +177,7 @@ public class Navbar_main extends AppCompatActivity {
 
     private void initHandlers() {
         GlobalApplication.handler = new MyHandler(this);
+        //TODO should this handlers uncomment?
         //String registrationID1 = GlobalApplication.agent.registerHandler(GlobalApplication.handler, "presentproof_states");
         //String registrationID2 = GlobalApplication.agent.registerHandler(GlobalApplication.handler, "presentproof _actions");
         //String registrationID3 = GlobalApplication.agent.registerHandler(GlobalApplication.handler, "issue-credential_states");
@@ -232,7 +234,7 @@ public class Navbar_main extends AppCompatActivity {
             @Override
             public void run() {
                 toolTipsManager.findAndDismiss(walletButton);
-                ToolTip.Builder builder=new ToolTip.Builder(Navbar_main.this,walletButton,constraintLayout,"Click here to get started",ToolTip.POSITION_ABOVE);
+                ToolTip.Builder builder=new ToolTip.Builder(NavbarMainActivity.this,walletButton,constraintLayout,"Click here to get started",ToolTip.POSITION_ABOVE);
                 builder.setAlign(ToolTip.ALIGN_CENTER);
                 builder.setBackgroundColor(Color.BLUE);
                 toolTipsManager.show(builder.build());

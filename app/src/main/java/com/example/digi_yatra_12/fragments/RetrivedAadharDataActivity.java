@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +17,6 @@ import com.example.digi_yatra_12.retrofit.Const;
 import com.example.digi_yatra_12.retrofit.RetrofitBuilder;
 import com.example.digi_yatra_12.retrofit.RetrofitService;
 import com.example.model.AccessTokenRoot;
-import com.example.model.EAadharRoot;
 import com.example.util.CustomProgressDialog;
 import com.example.util.MyUtils;
 
@@ -39,7 +36,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class RetrivedAadharDataActivity extends AppCompatActivity {
     private String code;
@@ -65,7 +61,7 @@ public class RetrivedAadharDataActivity extends AppCompatActivity {
 
     private void initViews() {
         popup = findViewById(R.id.ProcedBtn);
-        name = findViewById(R.id.txt_name);
+        name = findViewById(R.id.full_name);
         lastName = findViewById(R.id.txt_last_name);
         aadharID = findViewById(R.id.txt_aadhar_id);
         phone = findViewById(R.id.txt_phone);

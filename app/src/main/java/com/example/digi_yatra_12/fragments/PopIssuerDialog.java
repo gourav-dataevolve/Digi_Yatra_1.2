@@ -159,7 +159,7 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
     private class SaveConnection extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... Void) {
-            try {//TODO record for this database is different for different issuers  and use connection id as
+            try {
                 AadharDatabase.getInstance(requireContext()).Dao().saveConnections(new ConnectionDB(connectionId,type, new JSONObject(issuerJson),"", ""));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -170,7 +170,7 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);         //Todo show pop after acceptInvitation in state completed ,type-
+            BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);
         }
         /*@Override
         protected Void doInBackground(String... strings) {

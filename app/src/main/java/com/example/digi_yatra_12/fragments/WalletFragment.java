@@ -20,9 +20,6 @@ import com.example.digi_yatra_12.databinding.FragmentWalletFragmentBinding;
 
 public class WalletFragment extends Fragment {
     Button add;
-    Layout add1;
-    WalletFragment firstfragment;
-    Home_fragment2 secondFragment;
     FragmentWalletFragmentBinding binding;
 
     @Override
