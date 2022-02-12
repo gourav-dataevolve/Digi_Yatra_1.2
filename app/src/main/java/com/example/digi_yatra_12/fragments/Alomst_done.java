@@ -2,6 +2,8 @@ package com.example.digi_yatra_12.fragments;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,27 +14,47 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.digi_yatra_12.BaseClass;
 import com.example.digi_yatra_12.GlobalApplication;
 import com.example.digi_yatra_12.R;
+import com.example.digi_yatra_12.retrofit.Const;
+import com.example.digi_yatra_12.retrofit.RetrofitBuilder;
+import com.example.digi_yatra_12.retrofit.RetrofitService;
 import com.example.digi_yatra_12.roomDatabase.AadharDatabase;
 import com.example.digi_yatra_12.roomDatabase.ConnectionDB;
 import com.example.model.ConnectionDetails;
+import com.example.model.ValidateFaceB64Response;
+import com.example.util.CustomProgressDialog;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Alomst_done extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
@@ -43,12 +65,22 @@ public class Alomst_done extends AppCompatActivity {
     private String myConnectionId, myDID, theirDid;
     private  JSONObject jsonObject, jsonObject1;
     private String type;
+    private CustomProgressDialog customProgressDialog;
+    private ConstraintLayout instructionView, validationView;
+    private ImageView imgCheck1,imgCheck2, imgCheck3;
+    private TextView stringCheck1, stringCheck2, stringCheck3;
+    private ImageView imgPhoto;
+    private ImageView imgDot2, imgDot3;
+    private Bitmap photoBitmap;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alomst_done);
+        customProgressDialog = new CustomProgressDialog(this);
+        initViews();
+        showInstruction();
         if (getIntent().hasExtra("aadharData")) {
             aadharData = getIntent().getStringExtra("aadharData");
         }
@@ -66,6 +98,20 @@ public class Alomst_done extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initViews() {
+        instructionView = findViewById(R.id.constraint_instruction);
+        validationView  = findViewById(R.id.constraint_validation_complete);
+        imgCheck1 = findViewById(R.id.first_check);
+        imgCheck2 = findViewById(R.id.second_check);
+        imgCheck3 = findViewById(R.id.third_check);
+        stringCheck1 = findViewById(R.id.text_check1);
+        stringCheck2 = findViewById(R.id.text_check2);
+        stringCheck3 = findViewById(R.id.text_check3);
+        imgPhoto = findViewById(R.id.img_photo);
+        imgDot2 = findViewById(R.id.imageDot2);
+        imgDot3 = findViewById(R.id.imageDot3);
     }
 
     @Override
@@ -89,15 +135,14 @@ public class Alomst_done extends AppCompatActivity {
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Intent intent =new Intent(Alomst_done.this, Camera_Profile.class);
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            photoBitmap = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG,100,baos);
+            photoBitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
             byte[] b = baos.toByteArray();
             String encImage = Base64.encodeToString(b, Base64.NO_WRAP);
-            Log.d("popopopopopopopopo", encImage);
-            requestCredential(encImage);
+            validateSelfie(encImage);
 
-            intent.putExtra("data",photo);
+            //intent.putExtra("data",photo);
            // startActivity(intent);
 //            Bitmap photo = (Bitmap) data.getExtras().get("data");
 ////            imageView.setImageBitmap(photo);
@@ -128,6 +173,87 @@ public class Alomst_done extends AppCompatActivity {
 
 
     }
+
+    private void validateSelfie(String encImage) {
+        customProgressDialog.show();
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put(encImage);
+        JSONObject js = new JSONObject();
+        try {
+            js.put("instances", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObject jsonObject2 = new JsonParser().parse(js.toString()).getAsJsonObject();
+        Log.d("jhjhj", js.toString());
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.level(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Const.BASE_URL_VALIDATE_SELFIE).addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
+        RetrofitService rssapi = retrofit.create(RetrofitService.class);
+        rssapi.validateSelfie(jsonObject2).enqueue(new Callback<ValidateFaceB64Response>() {
+            @Override
+            public void onResponse(Call<ValidateFaceB64Response> call, Response<ValidateFaceB64Response> response) {
+                customProgressDialog.dismiss();
+                if (response.isSuccessful()) {
+                    if (response.body().getError() != null && !response.body().getError().isEmpty()) {
+                        Toast.makeText(Alomst_done.this, response.body().getError(), Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.body().getLiveness_result() != null && !response.body().getLiveness_result().isEmpty()) {
+                        if (response.body().getLiveness_result().equals("1")) {
+                            showValidation();
+                            imgCheck1.setVisibility(View.VISIBLE);
+                            stringCheck1.setVisibility(View.VISIBLE);
+                            imgPhoto.setImageBitmap(photoBitmap);
+                            showChecks(encImage);
+                        }
+                        else {
+                            Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ValidateFaceB64Response> call, Throwable t) {
+                customProgressDialog.dismiss();
+                Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showChecks(String encImage) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imgCheck2.setVisibility(View.VISIBLE);
+                stringCheck2.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        imgCheck3.setVisibility(View.VISIBLE);
+                        stringCheck3.setVisibility(View.VISIBLE);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                requestCredential(encImage);
+                            }
+                        },1000);
+                    }
+                },1000);
+            }
+        },1000);
+    }
+
     private void requestCredential(String selfie) {
         String idJsonKey = "";
         String idJsonFaceb64key = "";
@@ -186,7 +312,7 @@ public class Alomst_done extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            connectionDB = AadharDatabase.getInstance(Alomst_done.this).Dao().getConnectionData();
+            connectionDB = AadharDatabase.getInstance(Alomst_done.this).Dao().getConnectionData(myConnectionId);
             return null;
         }
 
@@ -204,7 +330,7 @@ public class Alomst_done extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            AadharDatabase.getInstance(Alomst_done.this).Dao().updateConnection(new ConnectionDB(0,myConnectionId,type,jsonObject1,myDID,theirDid));
+            AadharDatabase.getInstance(Alomst_done.this).Dao().updateConnection(new ConnectionDB(myConnectionId,type,jsonObject1,myDID,theirDid));
             return null;
         }
 
@@ -215,7 +341,16 @@ public class Alomst_done extends AppCompatActivity {
             BaseClass.requestCredential(myDID, theirDid,jsonObject, GlobalApplication.agent);
         }
     }
-
-
-
+    private void showInstruction() {
+        instructionView.setVisibility(View.VISIBLE);
+        validationView.setVisibility(View.GONE);
+        imgDot2.setColorFilter(ContextCompat.getColor(this, R.color.in_progress));
+        imgDot3.setColorFilter(ContextCompat.getColor(this, R.color.in_pending));
+    }
+    private void showValidation() {
+        instructionView.setVisibility(View.GONE);
+        validationView.setVisibility(View.VISIBLE);
+        imgDot2.setColorFilter(ContextCompat.getColor(this, R.color.complete));
+        imgDot3.setColorFilter(ContextCompat.getColor(this, R.color.in_progress));
+    }
 }

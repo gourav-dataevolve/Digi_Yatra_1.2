@@ -2,8 +2,11 @@ package com.example.digi_yatra_12.retrofit;
 
 import com.example.model.AccessTokenRoot;
 import com.example.model.EAadharRoot;
+import com.example.model.ValidateFaceB64Response;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -34,4 +37,7 @@ public interface RetrofitService {
     @POST("default/listIssuersVerifiers")
     @Headers({"x-api-key: 64yZGKTOukakcGVLHAe10242dc9J62mr10pXuikA"})
     Call<JsonArray> listIssuersVerifiers(@Body JsonObject jsonRequest);
+    @Headers({"Host: liveness-check.default.example.com", "Content-Type: application/xml"})
+    @POST("v1/models/liveness-check:predict")
+    Call<ValidateFaceB64Response> validateSelfie(@Body JsonObject jsonObject);
    }

@@ -12,58 +12,57 @@
         android:layout_width="@dimen/_19sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_arrow_back"
+        app:tint="#002E56" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_125sdp"
+
+        android:fontFamily="@font/poppins"
         android:text="Add your credential"
-        android:textColor="#000000"
+        android:textColor="#002E56"
         android:textSize="@dimen/_18ssp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/backBtn1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.002"
-        app:layout_constraintStart_toEndOf="@+id/backBtn1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintStart_toEndOf="@id/backBtn1"
+        app:layout_constraintTop_toTopOf="@id/backBtn1"
+         />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/imageDot2"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_140sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:background="#FFFFFF"
-
-        app:layout_constraintEnd_toStartOf="@+id/imageView15"
+        app:layout_constraintEnd_toStartOf="@+id/imageDot3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@drawable/ic_record" />
+        app:srcCompat="@drawable/ic_record"
+        app:tint="#002E56" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Review"
         android:textColor="#333333"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintEnd_toEndOf="@+id/imageDot3"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintStart_toStartOf="@+id/imageDot3"
+        app:layout_constraintTop_toBottomOf="@+id/imageDot3" />
 
     <ImageView
         android:id="@+id/imageView16"
@@ -72,27 +71,47 @@
         android:layout_marginStart="@dimen/_45sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:background="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintEnd_toStartOf="@+id/imageDot2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@drawable/ic_record" />
+        app:srcCompat="@drawable/ic_record"
+        app:tint="#01893E" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Setup Face ID"
         android:textColor="#333333"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/imageDot2"
         app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintStart_toStartOf="@+id/imageDot2"
+        app:layout_constraintTop_toBottomOf="@+id/imageDot2" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#dddddd"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/imageView16"
+        app:layout_constraintBottom_toBottomOf="@id/imageView16"
+        app:layout_constraintStart_toEndOf="@id/imageDot2"
+        app:layout_constraintEnd_toStartOf="@id/imageDot3"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#dddddd"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/imageView16"
+        app:layout_constraintBottom_toBottomOf="@id/imageView16"
+        app:layout_constraintStart_toEndOf="@id/imageView16"
+        app:layout_constraintEnd_toStartOf="@id/imageDot2"/>
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/imageDot3"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_240sdp"
@@ -110,6 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Verify ID"
         android:textColor="#333333"
         android:textSize="@dimen/_8ssp"
@@ -117,7 +137,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toBottomOf="@+id/imageView16" />
-
     <ImageView
         android:id="@+id/imageView17"
         android:layout_width="@dimen/_242sdp"
@@ -133,135 +152,235 @@
         app:layout_constraintTop_toBottomOf="@+id/textView30"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/blue_background_square" />
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/constraint_instruction"
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       app:layout_constraintStart_toStartOf="@id/imageView17"
+       app:layout_constraintEnd_toEndOf="@id/imageView17"
+       app:layout_constraintTop_toTopOf="@id/imageView17"
+       app:layout_constraintBottom_toBottomOf="@id/imageView17"
+       android:visibility="gone">
+       <TextView
+           android:id="@+id/textView33"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="@dimen/_20sdp"
+           android:layout_marginTop="@dimen/_20sdp"
+           android:fontFamily="@font/poppins"
+           android:text="Almost done"
+           android:textColor="#000000"
+           android:textSize="@dimen/_17ssp"
+           android:textStyle="bold"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+       <TextView
+           android:id="@+id/textView38"
+           android:layout_width="@dimen/_135sdp"
+           android:layout_height="wrap_content"
+           android:fontFamily="@font/roboto_regular"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:text="Make sure there are no obstructions like mask, spectacles on your face"
+           android:textColor="#000000"
+           android:textSize="@dimen/_8ssp"
+           android:textStyle="bold"
+           app:layout_constraintTop_toBottomOf="@id/textView33"
+           app:layout_constraintStart_toStartOf="@id/textView33"/>
 
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_75sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_75sdp"
-        android:layout_marginBottom="@dimen/_260sdp"
-        android:text="Almost done"
-        android:textColor="#000000"
-        android:textSize="@dimen/_10ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toTopOf="@+id/imageView17"
-        app:layout_constraintVertical_bias="0.083" />
 
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_35sdp"
+       <ImageView
+           android:id="@+id/imageView6"
+           android:layout_width="@dimen/_40sdp"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginTop="@dimen/_20sdp"
+           app:layout_constraintStart_toStartOf="@id/textView33"
+           app:layout_constraintTop_toBottomOf="@id/img_aadhar"
+           app:srcCompat="@drawable/_16_7168708_female_fill_circle_male_profile_icon_png_transparent_removebg_preview" />
 
-        android:layout_marginEnd="@dimen/_31sdp"
-        android:text="Please follow the below instructions to capture your face:"
-        android:textColor="#000000"
-        android:textSize="@dimen/_9sdp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="0.313"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+       <ImageView
+           android:id="@+id/imageView7"
+           android:layout_width="@dimen/_40sdp"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginBottom="106dp"
+           android:layout_marginTop="@dimen/_20sdp"
+           app:layout_constraintStart_toStartOf="@id/textView33"
+           app:layout_constraintTop_toBottomOf="@id/imageView6"
+           app:srcCompat="@drawable/_16_7168708_female_fill_circle_male_profile_icon_png_transparent_removebg_preview" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
+       <ImageView
+           android:id="@+id/img_aadhar"
+           android:layout_width="@dimen/_40sdp"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginTop="@dimen/_30sdp"
+           app:layout_constraintStart_toStartOf="@id/textView38"
+           app:layout_constraintTop_toBottomOf="@id/textView38"
+           app:srcCompat="@drawable/png_clipart_computer_icons_user_profile_women_avatar_child_face_thumbnail_removebg_preview" />
 
-        android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_79sdp"
-        android:layout_marginEnd="@dimen/_135sdp"
-        android:layout_marginBottom="@dimen/_110sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView35"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/_16_7168708_female_fill_circle_male_profile_icon_png_transparent_removebg_preview" />
+       <Button
+           android:id="@+id/cameraBtn"
+           android:layout_width="0dp"
+           android:layout_height="@dimen/_29sdp"
+           android:layout_marginEnd="@dimen/_20sdp"
+           android:layout_marginBottom="@dimen/_30sdp"
+           android:text="OK"
+           android:textAlignment="center"
+           android:textSize="@dimen/_9ssp"
+           app:backgroundTint="#002E56"
+           android:fontFamily="@font/roboto_regular"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="@+id/textView33" />
 
-    <ImageView
-        android:id="@+id/img_aadhar"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
+       <TextView
+           android:id="@+id/textView34"
+           android:layout_width="@dimen/_135sdp"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="@dimen/_11sdp"
+           android:fontFamily="@font/roboto_regular"
+           android:text="Make sure there are no obstructions like mask, spectacles on your face"
+           android:textColor="#000000"
+           android:textSize="@dimen/_8ssp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="@id/img_aadhar"
+           app:layout_constraintStart_toEndOf="@+id/img_aadhar"
+           app:layout_constraintTop_toTopOf="@id/img_aadhar" />
+       <TextView
+           android:id="@+id/textView36"
+           android:layout_width="@dimen/_110sdp"
+           android:layout_height="wrap_content"
+           android:fontFamily="@font/roboto_regular"
+           android:text="Ensure your face is exposed to sufficient lighting to capture a clear picture"
+           android:textColor="#000000"
+           android:textSize="@dimen/_8sdp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="@id/imageView6"
+           app:layout_constraintStart_toStartOf="@id/textView34"
+           app:layout_constraintTop_toTopOf="@id/imageView6" />
+       <TextView
+           android:id="@+id/textView37"
+           android:layout_width="@dimen/_110sdp"
+           android:layout_height="wrap_content"
+           android:fontFamily="@font/roboto_regular"
+           android:text="Ensure your face is exposed to sufficient lighting to capture a clear picture"
+           android:textColor="#000000"
+           android:textSize="@dimen/_8sdp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="@id/imageView7"
+           app:layout_constraintStart_toStartOf="@id/textView34"
+           app:layout_constraintTop_toTopOf="@id/imageView7" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_validation_complete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/imageView17"
+        app:layout_constraintEnd_toEndOf="@id/imageView17"
+        app:layout_constraintTop_toTopOf="@id/imageView17"
+        app:layout_constraintBottom_toBottomOf="@id/imageView17">
+        <ImageView
+            android:id="@+id/img_photo"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/txt_scanning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20ssp"
+            android:text="Scanning..."
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@id/img_photo"
+            app:layout_constraintStart_toStartOf="@id/img_photo"
+            app:layout_constraintEnd_toEndOf="@id/img_photo"/>
+        <ImageView
+            android:id="@+id/first_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="#01893E"
+            android:visibility="invisible"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:layout_constraintTop_toBottomOf="@id/txt_scanning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/second_check"/>
+        <TextView
+            android:id="@+id/text_check1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/validating_selfie"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#333333"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="invisible"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/first_check"
+            app:layout_constraintStart_toStartOf="@id/first_check"
+            app:layout_constraintEnd_toEndOf="@id/first_check"/>
+        <ImageView
+            android:id="@+id/second_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="#01893E"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:layout_constraintTop_toBottomOf="@id/txt_scanning"
+            app:layout_constraintStart_toEndOf="@id/first_check"
+            app:layout_constraintEnd_toStartOf="@id/third_check"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:id="@+id/text_check2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checking_liveness"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#333333"
+            android:textSize="@dimen/_10ssp"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/second_check"
+            app:layout_constraintStart_toStartOf="@id/second_check"
+            app:layout_constraintEnd_toEndOf="@id/second_check"/>
 
-        android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_21sdp"
-        android:layout_marginEnd="@dimen/_135sdp"
-        android:layout_marginBottom="@dimen/_190sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView35"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/png_clipart_computer_icons_user_profile_women_avatar_child_face_thumbnail_removebg_preview" />
-
-    <Button
-        android:id="@+id/cameraBtn"
-        android:layout_width="@dimen/_101sdp"
-        android:layout_height="@dimen/_29sdp"
-        android:layout_centerInParent="true"
-
-        android:layout_marginStart="@dimen/_56sdp"
-
-        android:layout_marginTop="@dimen/_39sdp"
-        android:layout_marginEnd="@dimen/_56sdp"
-        android:layout_marginBottom="@dimen/_46sdp"
-        android:text="OK"
-        android:textAlignment="center"
-        android:textSize="@dimen/_9ssp"
-        app:backgroundTint="#002E56"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView36"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_11sdp"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_200sdp"
-        android:text="Make sure there are no obstructions like mask, spectacles on your face"
-        android:textColor="#000000"
-        android:textSize="@dimen/_8ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/img_aadhar"
-        app:layout_constraintTop_toBottomOf="@+id/textView35"
-        app:layout_constraintVertical_bias="0.777" />
-
-    <TextView
-        android:id="@+id/textView36"
-        android:layout_width="@dimen/_110sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_9sdp"
-        android:layout_marginTop="@dimen/_28sdp"
-        android:layout_marginEnd="@dimen/_43sdp"
-        android:layout_marginBottom="@dimen/_118sdp"
-        android:text="Ensure your face is exposed to sufficient lighting to capture a clear picture"
-        android:textColor="#000000"
-        android:textSize="@dimen/_8sdp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView17"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView34"
-        app:layout_constraintVertical_bias="1.0" />
-
+        <ImageView
+            android:id="@+id/third_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="#01893E"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:layout_constraintTop_toBottomOf="@id/txt_scanning"
+            app:layout_constraintStart_toEndOf="@id/second_check"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/text_check3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verification_successful"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#333333"
+            android:textSize="@dimen/_10ssp"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/third_check"
+            app:layout_constraintStart_toStartOf="@id/third_check"
+            app:layout_constraintEnd_toEndOf="@id/third_check"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,6 @@ public interface Dao {
     void saveConnections(ConnectionDB connectionDB);
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateConnection(ConnectionDB connectionDB);
-    @Query("SELECT * FROM connection_db")
-    ConnectionDB getConnectionData();
+    @Query("SELECT * FROM connection_db WHERE connection_id = :connectionId LIMIT 1")
+    ConnectionDB getConnectionData(String connectionId);
 }

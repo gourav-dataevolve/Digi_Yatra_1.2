@@ -29,6 +29,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="validating_selfie">Validating \nSelfie</string>
+    <string name="checking_liveness">Checking\n liveness</string>
+    <string name="verification_successful">Verification \nSuccessful</string>
 
 
 </resources>

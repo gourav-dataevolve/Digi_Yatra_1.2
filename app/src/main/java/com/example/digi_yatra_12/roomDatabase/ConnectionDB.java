@@ -1,5 +1,6 @@
 package com.example.digi_yatra_12.roomDatabase;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -8,28 +9,19 @@ import org.json.JSONObject;
 @Entity(tableName = "connection_db")
 public class ConnectionDB {
     @PrimaryKey(autoGenerate = false)
-    private int id =0;
+    @NonNull
     private String connection_id = "";
     private String type = "";
     private JSONObject json;
     private String myDID = "";
     private String theirDID= "";
 
-    public ConnectionDB(int id, String connection_id, String type, JSONObject json, String myDID, String theirDID) {
-        this.id = id;
+    public ConnectionDB(String connection_id, String type, JSONObject json, String myDID, String theirDID) {
         this.connection_id = connection_id;
         this.type = type;
         this.json = json;
         this.myDID = myDID;
         this.theirDID = theirDID;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getConnection_id() {

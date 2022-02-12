@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.digi_yatra_12" >
+    package="com.example.digi_yatra_12">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,16 +12,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Digi_Yatra_12" >
+        android:theme="@style/Theme.Digi_Yatra_12"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.PopAcknowledgementDialogActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".WebViewActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".fragments.Camera_profile2"
             android:exported="false" />
@@ -39,8 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".fragments.Credential_Choose"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".fragments.pop_crediential"
             android:exported="false"
@@ -51,9 +51,7 @@
             android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity
             android:name=".navbar.Navbar_main"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".signup.Otp_page"
             android:exported="false" />
@@ -62,7 +60,7 @@
             android:exported="false" />
         <activity
             android:name=".StartActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

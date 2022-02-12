@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
+
 import androidx.annotation.RequiresApi;
 
-import com.example.digi_yatra_12.fragments.AddDataUrlActivity;
+import com.example.digi_yatra_12.activities.PopAcknowledgementDialogActivity;
 import com.example.digi_yatra_12.fragments.Camera_profile2;
 
 import org.hyperledger.aries.api.Handler;
@@ -47,15 +48,16 @@ public class MyHandler implements Handler {
                     String type1 = jsonObject.getJSONObject("message").getString("Type");
                     String stateID = jsonObject.getJSONObject("message").getString("StateID");
                     if (type1.equals("post_state") && stateID.equals("completed")) {
-                        //TODO extract the connection id and if this connection id exists in database then extract requestFieldsForUser data and show in popup and
                         String connectionId = jsonObject.getJSONObject("message").getJSONObject("Properties").getString("connectionID");
-                        SharedPreferences sharedPreferences = context.getSharedPreferences("digiyatra", Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("digiyatra", context.MODE_PRIVATE);
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                         myEdit.putString("connection_id", connectionId);
                         myEdit.apply();
-                        myEdit.commit();
-                        Intent i = new Intent(context, AddDataUrlActivity.class);
-                        context.startActivity(i);
+                        myEdit.commit();//Todo why are we saving in shared preference
+                        Intent intent = new Intent(context, PopAcknowledgementDialogActivity.class);
+                        intent.putExtra("connectionId", connectionId);
+                        context.startActivity(intent);
+
                     }
                 }
 /*
@@ -109,7 +111,7 @@ public class MyHandler implements Handler {
 
                     Intent intent = new Intent(context, Camera_profile2.class);
                     intent.putExtra("json", lastMessage);
-                    context.startActivity(intent);
+                    context.startActivity(intent);             //TODo fetch information from database using myDID from connection database and fetch field "responseFiledsForUser" and show this field in screen no 55
                     //show screen no 19
                    /* { show this data in screen number 19
 
@@ -125,9 +127,9 @@ public class MyHandler implements Handler {
                             {
                                 "data":{
                                 "json":{  store it room dtabase first column,
-                                    "@context":[
+                                    "@activity":[
                                     "https://www.w3.org/2018/credentials/v1",
-                                            "https://dyce-context.s3.us-west-2.amazonaws.com/v1.json",
+                                            "https://dyce-activity.s3.us-west-2.amazonaws.com/v1.json",
                                             "https://w3id.org/security/bbs/v1"
                      ],
                                     "credentialSubject":{

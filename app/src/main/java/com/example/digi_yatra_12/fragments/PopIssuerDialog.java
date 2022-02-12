@@ -73,59 +73,6 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
         issuerAdapter.notifyDataSetChanged();
     }
 
-    private void showPopUP(View view, IssuersVerifier issuersVerifier) {
-        Dialog builder = new Dialog(getContext());
-        ViewGroup viewGroup = view.findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.dialog_acknowledgement, viewGroup, false);
-        builder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Button btn= dialogView.findViewById(R.id.OkBtn2);
-        Button cancelButton = dialogView.findViewById(R.id.btn_cancel);
-        CheckBox checkBox = dialogView.findViewById(R.id.checkBox2);
-        LinearLayout linearLayout = dialogView.findViewById(R.id.linearLayout);
-        List<String> requestField = issuersVerifier.getRequestFieldsForUser();
-        for (int i=0; i<requestField.size(); i++) {
-            TextView textView = new TextView(getContext());
-            textView.setText(i+1+"."+requestField.get(i));
-            LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            buttonLayoutParams.setMargins(0, 10, 0, 0);
-            textView.setLayoutParams(buttonLayoutParams);
-            linearLayout.addView(textView);
-        }
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (checkBox.isChecked()) {
-                    /*Intent i = new Intent(getContext(), AddDataUrlActivity.class);
-                    startActivity(i);*/
-                    if (connectionId != null) {
-                        BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);
-                    }
-                    builder.dismiss();
-                    dismiss();
-                }
-            }
-        });
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                builder.dismiss();
-            }
-        });
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkBox.isChecked()) {
-                    btn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.btn_enable, getResources().newTheme())));
-                }
-                else {
-                    btn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.btn_disable, getResources().newTheme())));
-                }
-            }
-        });
-        builder.setContentView(dialogView);
-        builder.create();
-        builder.show();
-    }
 
     @Override
     public int getTheme() {
@@ -213,7 +160,7 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
         @Override
         protected Void doInBackground(Void... Void) {
             try {//TODO record for this database is different for different issuers  and use connection id as
-                AadharDatabase.getInstance(requireContext()).Dao().saveConnections(new ConnectionDB(0,connectionId,type, new JSONObject(issuerJson),"", ""));
+                AadharDatabase.getInstance(requireContext()).Dao().saveConnections(new ConnectionDB(connectionId,type, new JSONObject(issuerJson),"", ""));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -223,7 +170,7 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            showPopUP(view, issuersVerifier);//Todo show pop after acceptInvitation in state completed ,type-
+            BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);         //Todo show pop after acceptInvitation in state completed ,type-
         }
         /*@Override
         protected Void doInBackground(String... strings) {

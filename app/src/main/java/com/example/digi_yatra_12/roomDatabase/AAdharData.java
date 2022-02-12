@@ -21,8 +21,8 @@ public class AAdharData {
         this.json = json;
         this.issuerDID = issuerDID;
         this.issuerName = issuerName;
-        this.type = type;
-        this.previousShowedData = previousShowedData;
+        this.type = type;      //TODO credentialType":"IdentityCredential",
+        this.previousShowedData = previousShowedData;   //TODO responseFiledsForUser from the connectionDB
     }
 
     public int getId() {
