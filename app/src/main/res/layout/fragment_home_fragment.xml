@@ -242,7 +242,8 @@
             app:layout_constraintStart_toStartOf="@id/dotBTN"
             app:layout_constraintEnd_toEndOf="@id/dotBTN"
             app:layout_constraintTop_toTopOf="@id/dotBTN"
-            app:layout_constraintBottom_toBottomOf="@id/dotBTN">
+            app:layout_constraintBottom_toBottomOf="@id/dotBTN"
+            android:visibility="invisible">
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
