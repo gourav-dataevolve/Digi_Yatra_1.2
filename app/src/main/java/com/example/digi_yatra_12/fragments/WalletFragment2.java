@@ -96,15 +96,20 @@ public class WalletFragment2 extends Fragment implements CardAdapter.CardClick {
         @Override
         protected void onPostExecute(List<AAdharData> aAdharDataList) {
             super.onPostExecute(aAdharDataList);
-            cardAdapter = new CardAdapter(getContext(), aAdharDataList, new CardAdapter.CardClick() {
-                @Override
-                public void onCardClick(AAdharData aAdharData, View view) {
+            if (aAdharDataList != null && !aAdharDataList.isEmpty()) {
+                cardAdapter = new CardAdapter(getContext(), aAdharDataList, new CardAdapter.CardClick() {
+                    @Override
+                    public void onCardClick(AAdharData aAdharData, View view) {
 
-                }
-            });
-            recyclerview.setLayoutManager(new LinearLayoutManager(requireContext()));
-            recyclerview.setAdapter(cardAdapter);
-            cardAdapter.notifyDataSetChanged();
+                    }
+                });
+                recyclerview.setLayoutManager(new LinearLayoutManager(requireContext()));
+                recyclerview.setAdapter(cardAdapter);
+                cardAdapter.notifyDataSetChanged();
+            }
+            else {
+
+            }
         }
     }
 }
