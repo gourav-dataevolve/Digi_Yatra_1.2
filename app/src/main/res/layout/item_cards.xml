@@ -123,11 +123,11 @@
         <ImageView
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
-            android:maxHeight="@dimen/_20sdp"
             android:background="@drawable/bg_rounded_corner"
+            android:maxHeight="@dimen/_15sdp"
+            android:src="@drawable/rectangle_68"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_identity1"
-            android:src="@drawable/rectangle_68"/>
+            app:layout_constraintTop_toTopOf="@id/txt_identity1" />
         <View
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"

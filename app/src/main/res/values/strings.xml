@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Digi_Yatra_1.2</string>
 
 
@@ -12,8 +13,8 @@
     <string name="identity_credential_issuer">Identity Credential Issuer</string>
     <string name="acknowledgement">Acknowledgement</string>
     <string name="to_create_a_digi_yatra_identity_credential">To create a Digi Yatra Identity Credential</string>
-    <string name="face_id">1. Face ID</string>
-    <string name="govt_photo_id_card">2. Govt photo ID Card</string>
+    <string name="face_id" color="#000000"><font fgcolor="#000000">1. Face ID</font></string>
+    <string name="govt_photo_id_card" color="#000000">2. Govt photo ID Card</string>
     <string name="your_data_is_safe_and_in_your_control">Your data is safe and in your control.</string>
     <string name="learn_more"><u>Learn More</u></string>
     <string name="i_acknowledge">I Acknowledge</string>

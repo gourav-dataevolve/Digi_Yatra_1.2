@@ -1,5 +1,6 @@
 package com.example.digi_yatra_12.fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ public class WalletFragment2 extends Fragment implements CardAdapter.CardClick {
     private RecyclerView recyclerview;
     private List<AAdharData> aAdharDataList = new ArrayList<>();
     private CardAdapter cardAdapter;
+    Button add;
 
     public WalletFragment2() { }
 
@@ -40,6 +43,25 @@ public class WalletFragment2 extends Fragment implements CardAdapter.CardClick {
         View view = inflater.inflate(R.layout.fragment_wallet2, container, false);
         initViews(view);
         getData();
+
+
+
+        add = (Button) view.findViewById(R.id.addBtn);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Fragment secondfragment=new Home_fragment2();
+//                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.activity_main_nav_host_fragment,secondfragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+                Intent intent =new Intent(getActivity(),Credential_Choose.class);
+                startActivity(intent);
+
+
+            }
+        });
         return view;
     }
 

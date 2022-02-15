@@ -5,6 +5,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @androidx.room.Dao
@@ -21,4 +22,8 @@ public interface Dao {
     ConnectionDB getConnectionData(String connectionId);
     @Query("SELECT * FROM connection_db WHERE myDID = :myDid LIMIT 1")
     ConnectionDB getConnectionDataByMyDid(String myDid);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void saveBoardingPass(BoardingPassData boardingPassData);
+    @Query("SELECT * FROM boarding_pass")
+    List<BoardingPassData> getBoardingPass();
 }

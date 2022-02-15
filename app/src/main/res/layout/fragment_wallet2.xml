@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.WalletFragment2">
@@ -10,66 +15,89 @@
         android:id="@+id/txt_wallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="Id wallet"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_105sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="ID Wallet"
+        android:textColor="#002E56"
+        android:textSize="@dimen/_25ssp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_18sdp"
         android:layout_marginTop="@dimen/_15sdp"
+
+
+        android:backgroundTint="#E6E6E6"
         android:text="Identity Credentials"
+
         android:textAllCaps="false"
-        android:textColor="#1C1C1C"
-        app:layout_constraintStart_toStartOf="@id/txt_wallet"
+        android:textColor="#000000"
+
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_wallet" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_105sdp"
+        android:backgroundTint="#E6E6E6"
         android:text="Health Credentials"
         android:textAllCaps="false"
         android:textColor="#1C1C1C"
+
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/chip1"
         app:layout_constraintTop_toBottomOf="@id/txt_wallet" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_270sdp"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_18sdp"
         android:layout_marginTop="@dimen/_25ssp"
-        android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         app:layout_constraintBottom_toTopOf="@+id/addBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/txt_wallet"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chip1" />
 
     <Button
         android:id="@+id/addBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="@dimen/_50sdp"
         android:fontFamily="@font/poppins"
         android:text="Add Credential"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#ffffff"
         app:backgroundTint="#002E56"
-        android:layout_marginBottom="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/recycler"
-        app:layout_constraintStart_toStartOf="@id/recycler" />
+        app:layout_constraintStart_toStartOf="@id/recycler"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

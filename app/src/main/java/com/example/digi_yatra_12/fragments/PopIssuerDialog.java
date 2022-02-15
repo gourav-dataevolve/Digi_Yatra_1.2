@@ -172,24 +172,5 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
             super.onPostExecute(unused);
             BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);
         }
-        /*@Override
-        protected Void doInBackground(String... strings) {
-            try {
-                AadharDatabase.getInstance(requireContext()).Dao().saveConnections(new ConnectionDB(0,connectionId,type, new JSONObject(issuerJson),"", ""));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            if(imageView!=null) {
-                p.hide();
-                imageView.setImageBitmap(bitmap);
-            }else {
-                p.show();
-            }
-        }*/
     }
 }

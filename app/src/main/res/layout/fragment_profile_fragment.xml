@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+
+    <ImageView
+        android:id="@+id/imageView47"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_107sdp"
+        android:layout_marginBottom="@dimen/_345sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/wavesignup2" />
+
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="profile" />
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_148sdp"
+        android:layout_marginBottom="@dimen/_424sdp"
+        android:fontFamily="@font/poppins"
+        android:text="Profile"
+        android:textColor="#002E56"
+        android:textSize="@dimen/_24ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_114sdp"
+
+        android:layout_marginStart="@dimen/_58sdp"
+        android:layout_marginTop="@dimen/_44sdp"
+        android:layout_marginEnd="@dimen/_60sdp"
+        android:layout_marginBottom="@dimen/_290sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        app:srcCompat="@drawable/png_clipart_computer_icons_user_profile_women_avatar_child_face_thumbnail_removebg_preview" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

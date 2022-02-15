@@ -17,10 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.digi_yatra_12.R;
 import com.example.digi_yatra_12.databinding.FragmentWalletFragmentBinding;
+import com.example.digi_yatra_12.navbar.NavbarMainActivity;
 
 public class WalletFragment extends Fragment {
     Button add;
     FragmentWalletFragmentBinding binding;
+    ImageButton back;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,26 +39,35 @@ public class WalletFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(getActivity(),pop_crediential.class);
+                Intent intent =new Intent(getActivity(),Credential_Choose.class);
                 startActivity(intent);
 
 
             }
         });
-
-        ImageButton back =(ImageButton) view.findViewById(R.id.backBtn1);
+        back = (ImageButton)view.findViewById(R.id.backBtn1);
         back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment secondfragment=new HomeFragment();
-                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container,secondfragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
 
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent (getActivity(), NavbarMainActivity.class ) ;
+                startActivity( i );
             }
         });
+
+//        ImageButton back =(ImageButton) view.findViewById(R.id.backBtn1);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Fragment secondfragment=new HomeFragment();
+//                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container,secondfragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//
+//            }
+//        });
 
 
      return view;

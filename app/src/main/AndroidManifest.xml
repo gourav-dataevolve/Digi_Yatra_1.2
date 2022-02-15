@@ -7,7 +7,7 @@
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
-        android:extractNativeLibs="false"
+        android:extractNativeLibs="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -15,11 +15,17 @@
         android:theme="@style/Theme.Digi_Yatra_12"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".fragments.ScanBordingPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragments.Update_your_travel"
+            android:exported="false" />
+        <activity
             android:name=".activities.PopAcknowledgementDialogActivity"
             android:exported="false" />
         <activity
             android:name=".WebViewActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".fragments.Camera_profile2"
             android:exported="false" />
@@ -34,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".fragments.Credential_Choose"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".fragments.pop_crediential"
             android:exported="false"
@@ -45,7 +51,14 @@
             android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity
             android:name=".navbar.NavbarMainActivity"
-            android:exported="true"></activity>
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".signup.Otp_page"
             android:exported="false" />
@@ -61,6 +74,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

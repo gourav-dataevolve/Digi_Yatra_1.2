@@ -31,42 +31,47 @@
         android:textSize="@dimen/_10ssp"
         app:layout_constraintStart_toStartOf="@id/full_name"
         app:layout_constraintTop_toBottomOf="@id/full_name" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/face_id"
-        android:textColor="#000000"
-        android:textSize="@dimen/_8ssp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@id/full_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView28"/>
 
-    <!--<TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
         android:fontFamily="@font/roboto_regular"
+
+        android:orientation="vertical"
         android:text="@string/face_id"
         android:textColor="#000000"
+
+        android:background="#000000"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintStart_toStartOf="@id/txt_name"
+        app:layout_constraintStart_toStartOf="@id/full_name"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/govt_photo_id_card"
-        android:textColor="#000000"
-        android:textSize="@dimen/_8sdp"
-        app:layout_constraintStart_toStartOf="@id/txt_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />-->
+<!--    &lt;!&ndash;<TextView-->
+<!--        android:id="@+id/textView29"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_15sdp"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:text="@string/face_id"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="@dimen/_8ssp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/txt_name"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView28" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView32"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_5sdp"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:text="@string/govt_photo_id_card"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="@dimen/_8sdp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/txt_name"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView29" />&ndash;&gt;-->
 
     <TextView
         android:id="@+id/textView37"

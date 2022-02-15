@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,12 +58,22 @@ public class RetrivedAadharDataActivity extends AppCompatActivity {
         else {
             finish();
         }
+
+        ImageButton ib = (ImageButton)findViewById(R.id.backBtn1);
+        ib.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void initViews() {
         popup = findViewById(R.id.ProcedBtn);
         name = findViewById(R.id.full_name);
-        lastName = findViewById(R.id.txt_last_name);
+//      lastName = findViewById(R.id.txt_last_name);
         aadharID = findViewById(R.id.txt_aadhar_id);
         phone = findViewById(R.id.txt_phone);
         aadharPhoto = findViewById(R.id.img_aadhar);

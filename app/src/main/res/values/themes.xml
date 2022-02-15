@@ -26,6 +26,7 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
 
         <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:background">#ffffff</item>
 
         <!--        <item name="android:colorBackgroundCacheHint">@null</item>-->
 

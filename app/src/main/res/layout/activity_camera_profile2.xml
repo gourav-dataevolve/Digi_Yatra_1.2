@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".fragments.Camera_profile2">
 
 
@@ -144,19 +145,19 @@
             android:id="@+id/img_aadhar"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="31dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/profile" />
+            android:src="@mipmap/ic_launcher" />
         <ImageView
             android:id="@+id/imageView35"
             android:layout_width="@dimen/_29sdp"
             android:layout_height="@dimen/_29sdp"
             app:layout_constraintBottom_toBottomOf="@id/img_aadhar"
             app:layout_constraintEnd_toEndOf="@id/img_aadhar"
-            app:srcCompat="@drawable/vector"
+            app:srcCompat="@drawable/tick_mark"
             android:background="@drawable/bg_circle"
             android:backgroundTint="#01893E"/>
 
@@ -252,7 +253,7 @@
             app:layout_constraintBottom_toBottomOf="@id/txt_phone1" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_accept"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:text="Accept"
             android:layout_marginTop="@dimen/_20sdp"
@@ -265,23 +266,23 @@
             app:layout_constraintStart_toEndOf="@id/btn_cancel"
             app:layout_constraintTop_toBottomOf="@id/txt_phone1"
             />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:textAllCaps="false"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
             android:textColor="#002E56"
-            app:strokeColor="#002E56"
             android:textSize="@dimen/_10ssp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_accept"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_phone1"
-            />
+            app:strokeColor="#002E56" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

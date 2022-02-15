@@ -1,5 +1,7 @@
 package com.example.digi_yatra_12.fragments;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class Credential_Choose extends AppCompatActivity {
 
     private String senderUrl = "https://chr2pwsfnb.execute-api.ap-south-1.amazonaws.com/";
     private CustomProgressDialog customProgressDialog;
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +37,35 @@ public class Credential_Choose extends AppCompatActivity {
         popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                check = true;
+                popup.setColorFilter( Color.rgb(
+                        234, 243, 252
+                ));
+
                 httpCall();
             }
         });
+        if (check == true) {
+            popup.setBackgroundColor(Color.BLACK);
+
+        }
+        ImageButton ib = (ImageButton)findViewById(R.id.backBtn1);
+        ib.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
     }
+
+
+
+
+
 
     private void httpCall() {
         customProgressDialog.show();

@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {AAdharData.class, ConnectionDB.class}, version = 1)
+@Database(entities = {AAdharData.class, ConnectionDB.class, BoardingPassData.class}, version = 1)
 @TypeConverters(TypeConverter.class)
 public abstract class AadharDatabase extends RoomDatabase {
 

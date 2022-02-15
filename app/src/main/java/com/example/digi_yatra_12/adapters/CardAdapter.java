@@ -47,7 +47,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder>{
         holder.txtIdentity.setText(aAdharDataList.get(position).getIssuersVerifier().getCredentialType());
         try {
             holder.txtNameKey.setText(aAdharDataList.get(position).getIssuersVerifier().getResponseFiledsForUser().getFullName());
-            holder.txtNameValue.setText(aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("givenName"));
+            holder.txtNameValue.setText(aAdharDataList.get(position).getJson().getJSONObject("credentialSubject").getString("fullName"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
