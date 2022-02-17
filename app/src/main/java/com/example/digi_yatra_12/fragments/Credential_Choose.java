@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,20 +34,32 @@ public class Credential_Choose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credential_choose);
         customProgressDialog = new CustomProgressDialog(this);
-        ImageButton popup = (ImageButton) findViewById(R.id.identitialBtn);
-        popup.setOnClickListener(new View.OnClickListener() {
+        ImageButton identityCredentials = (ImageButton) findViewById(R.id.identitialBtn);
+        ImageView heathCredentials = findViewById(R.id.health_credential);
+        identityCredentials.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 check = true;
-                popup.setColorFilter( Color.rgb(
+                identityCredentials.setColorFilter( Color.rgb(
                         234, 243, 252
                 ));
 
-                httpCall();
+                httpCall("IdentityCredential");
+            }
+        });
+        heathCredentials.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check = true;
+                heathCredentials.setColorFilter( Color.rgb(
+                        234, 243, 252
+                ));
+
+                httpCall("HealthCredential");
             }
         });
         if (check == true) {
-            popup.setBackgroundColor(Color.BLACK);
+            identityCredentials.setBackgroundColor(Color.BLACK);
 
         }
         ImageButton ib = (ImageButton)findViewById(R.id.backBtn1);
@@ -67,10 +80,10 @@ public class Credential_Choose extends AppCompatActivity {
 
 
 
-    private void httpCall() {
+    private void httpCall(String issuer) {
         customProgressDialog.show();
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("type", "issuer");
+        jsonObject.addProperty("type", issuer);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(senderUrl).addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitService rssapi = retrofit.create(RetrofitService.class);

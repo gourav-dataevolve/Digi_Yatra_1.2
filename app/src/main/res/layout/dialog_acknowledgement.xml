@@ -44,7 +44,6 @@
         android:text="@string/face_id"
         android:textColor="#000000"
 
-        android:background="#000000"
         android:textSize="@dimen/_8ssp"
         app:layout_constraintStart_toStartOf="@id/full_name"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />

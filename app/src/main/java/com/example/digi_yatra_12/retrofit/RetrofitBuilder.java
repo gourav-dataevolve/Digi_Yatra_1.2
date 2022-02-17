@@ -6,16 +6,17 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitBuilder {
-    RetrofitBuilder() {
-
+    String baseUrl;
+    public RetrofitBuilder(String baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
-    public static RetrofitService create() {
+    public  RetrofitService create() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         return new Retrofit.Builder()
-                .baseUrl(Const.BASE_URL_Get_ACCESS_TOKEN)
+                .baseUrl(baseUrl)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

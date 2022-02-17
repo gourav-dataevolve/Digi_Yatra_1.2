@@ -13,7 +13,7 @@ public class AAdharData {
     @PrimaryKey(autoGenerate = true)
     private int id =0;
     private JSONObject json;
-    private String issuerDID = "";
+    private String issuerDID = ""; //TOdo query using issuerDiD
     private String issuerName = "";
     private String type = "";
     private IssuersVerifier issuersVerifier ;

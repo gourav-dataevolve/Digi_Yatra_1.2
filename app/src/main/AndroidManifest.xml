@@ -15,10 +15,18 @@
         android:theme="@style/Theme.Digi_Yatra_12"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ReviewHealthCredentialsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddCredentialsCowinActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_credentials_cowin"
+            android:theme="@style/Theme.Digi_Yatra_12.NoActionBar" />
+        <activity
             android:name=".fragments.ScanBordingPassActivity"
             android:exported="false" />
         <activity
-            android:name=".fragments.Update_your_travel"
+            android:name=".fragments.UpdateYourTravelActivity"
             android:exported="false" />
         <activity
             android:name=".activities.PopAcknowledgementDialogActivity"
@@ -30,7 +38,7 @@
             android:name=".fragments.Camera_profile2"
             android:exported="false" />
         <activity
-            android:name=".fragments.Alomst_done"
+            android:name=".fragments.AlmostDoneActivity"
             android:exported="false" />
         <activity
             android:name=".fragments.RetrivedAadharDataActivity"
@@ -51,13 +59,12 @@
             android:theme="@style/Theme.AppCompat.CustomTheme" />
         <activity
             android:name=".navbar.NavbarMainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".signup.Otp_page"
@@ -67,8 +74,7 @@
             android:exported="false" />
         <activity
             android:name=".StartActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

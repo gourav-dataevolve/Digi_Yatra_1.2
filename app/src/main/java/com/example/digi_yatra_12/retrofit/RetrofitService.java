@@ -40,4 +40,10 @@ public interface RetrofitService {
     @Headers({"Host: liveness-check.default.example.com", "Content-Type: application/xml"})
     @POST("v1/models/liveness-check:predict")
     Call<ValidateFaceB64Response> validateSelfie(@Body JsonObject jsonObject);
+    @Headers({"x-api-key: Zqh976skv453BkmlrWpFS25MBCPojStb5cbmQQo8"})
+    @POST("v3/vaccination/generateOTP")
+    Call<JsonObject> sendOtp(@Body JsonObject jsonObject);
+    @Headers({"x-api-key: Zqh976skv453BkmlrWpFS25MBCPojStb5cbmQQo8"})
+    @POST("v3/vaccination/confirmOTP")
+    Call<JsonObject> verifyOtp(@Body JsonObject jsonObject);
    }

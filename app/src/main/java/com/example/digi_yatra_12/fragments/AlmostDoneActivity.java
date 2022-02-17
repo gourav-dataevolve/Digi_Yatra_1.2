@@ -27,7 +27,6 @@ import com.example.digi_yatra_12.BaseClass;
 import com.example.digi_yatra_12.GlobalApplication;
 import com.example.digi_yatra_12.R;
 import com.example.digi_yatra_12.retrofit.Const;
-import com.example.digi_yatra_12.retrofit.RetrofitBuilder;
 import com.example.digi_yatra_12.retrofit.RetrofitService;
 import com.example.digi_yatra_12.roomDatabase.AadharDatabase;
 import com.example.digi_yatra_12.roomDatabase.ConnectionDB;
@@ -35,7 +34,6 @@ import com.example.model.ConnectionDetails;
 import com.example.model.ValidateFaceB64Response;
 import com.example.util.CustomProgressDialog;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -46,7 +44,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -56,7 +53,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Alomst_done extends AppCompatActivity {
+public class AlmostDoneActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
     String aadharData;
@@ -198,7 +195,7 @@ public class Alomst_done extends AppCompatActivity {
                 customProgressDialog.dismiss();
                 if (response.isSuccessful()) {
                     if (response.body().getError() != null && !response.body().getError().isEmpty()) {
-                        Toast.makeText(Alomst_done.this, response.body().getError(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlmostDoneActivity.this, response.body().getError(), Toast.LENGTH_SHORT).show();
                     }
                     else if (response.body().getLiveness_result() != null && !response.body().getLiveness_result().isEmpty()) {
                         if (response.body().getLiveness_result().equals("1")) {
@@ -209,22 +206,22 @@ public class Alomst_done extends AppCompatActivity {
                             showChecks(encImage);
                         }
                         else {
-                            Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AlmostDoneActivity.this, "validation failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else {
-                        Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlmostDoneActivity.this, "validation failed", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlmostDoneActivity.this, "validation failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ValidateFaceB64Response> call, Throwable t) {
                 customProgressDialog.dismiss();
-                Toast.makeText(Alomst_done.this, "validation failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlmostDoneActivity.this, "validation failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -244,7 +241,11 @@ public class Alomst_done extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                requestCredential(encImage);
+                                try {
+                                    requestCredential(encImage);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         },1000);
                     }
@@ -253,7 +254,7 @@ public class Alomst_done extends AppCompatActivity {
         },1000);
     }
 
-    private void requestCredential(String selfie) {
+    private void requestCredential(String selfie) throws JSONException {
         String idJsonKey = "";
         String idJsonFaceb64key = "";
         String idTypekey = "";
@@ -286,19 +287,23 @@ public class Alomst_done extends AppCompatActivity {
 
             jsonObject.getJSONArray("requests~attach").getJSONObject(0).getJSONObject("data").getJSONObject("json").getJSONObject("credential")
                     .getJSONObject("credentialSubject").put("idType", "aadhaar"); ///TODO don,t know the value of idTypekey so putting the static value "aadhar
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
         SharedPreferences sharedPreferences = getSharedPreferences("digiyatra", Context.MODE_PRIVATE);
         String connectionId = sharedPreferences.getString("connection_id","");
         JSONObject getConnectionJsonObject = BaseClass.getConnection(connectionId, GlobalApplication.agent);
-        ConnectionDetails connectionDetails  = new Gson().fromJson(getConnectionJsonObject.toString().trim(), ConnectionDetails.class);
-        myConnectionId = connectionDetails.getConnRecord().get(0).getConnectionID();
-        myDID = connectionDetails.getConnRecord().get(0).getMyDID();
-        theirDid = connectionDetails.getConnRecord().get(0).getTheirDID();
-        GetConnectionData getConnectionData = new GetConnectionData();
-        getConnectionData.execute();
+        if (getConnectionJsonObject.getString("status").equals("0")) {
+            Toast.makeText(AlmostDoneActivity.this,getConnectionJsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            ConnectionDetails connectionDetails = new Gson().fromJson(getConnectionJsonObject.toString().trim(), ConnectionDetails.class);
+            myConnectionId = connectionDetails.getConnRecord().get(0).getConnectionID();
+            myDID = connectionDetails.getConnRecord().get(0).getMyDID();
+            theirDid = connectionDetails.getConnRecord().get(0).getTheirDID();
+            GetConnectionData getConnectionData = new GetConnectionData();
+            getConnectionData.execute();
+        }
         //ConnectionDB connectionDB = AadharDatabase.getInstance(Alomst_done.this).Dao().getConnectionData();
        // JSONObject jsonObject1 = connectionDB.getJson();
        // String type = connectionDB.getType();
@@ -311,7 +316,7 @@ public class Alomst_done extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            connectionDB = AadharDatabase.getInstance(Alomst_done.this).Dao().getConnectionData(myConnectionId);
+            connectionDB = AadharDatabase.getInstance(AlmostDoneActivity.this).Dao().getConnectionData(myConnectionId);
             return null;
         }
 
@@ -329,7 +334,7 @@ public class Alomst_done extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            AadharDatabase.getInstance(Alomst_done.this).Dao().updateConnection(new ConnectionDB(myConnectionId,type,jsonObject1,myDID,theirDid));
+            AadharDatabase.getInstance(AlmostDoneActivity.this).Dao().updateConnection(new ConnectionDB(myConnectionId,type,jsonObject1,myDID,theirDid));
             return null;
         }
 

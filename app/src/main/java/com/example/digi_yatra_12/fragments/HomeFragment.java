@@ -16,15 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.digi_yatra_12.R;
 
 import com.example.digi_yatra_12.adapters.BoardingPassAdapter;
+import com.example.digi_yatra_12.adapters.SliderAdapter;
 import com.example.digi_yatra_12.databinding.FragmentHomeFragmentBinding;
-import com.example.digi_yatra_12.navbar.NavbarMainActivity;
 import com.example.digi_yatra_12.roomDatabase.AadharDatabase;
 import com.example.digi_yatra_12.roomDatabase.BoardingPassData;
+import com.example.model.SliderData;
 import com.smarteist.autoimageslider.SliderView;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
@@ -115,7 +115,7 @@ FragmentHomeFragmentBinding binding;
 
         add.setOnClickListener( new View.OnClickListener() {
             public void onClick(View v) {
-                intent = new Intent( getActivity(), Update_your_travel.class );
+                intent = new Intent( getActivity(), UpdateYourTravelActivity.class );
                 startActivity( intent );
             }
         } );
@@ -180,7 +180,7 @@ FragmentHomeFragmentBinding binding;
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            if (boardingPassData == null && boardingPassData.isEmpty()) {
+            if (boardingPassData == null || boardingPassData.isEmpty()) {
                 constraintViewPager.setVisibility(View.INVISIBLE);
                 constraintNoData.setVisibility(View.VISIBLE);
             }

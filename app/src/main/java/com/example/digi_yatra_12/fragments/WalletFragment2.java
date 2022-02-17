@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -82,6 +84,7 @@ public class WalletFragment2 extends Fragment implements CardAdapter.CardClick {
     }
 
     private class GetAadhar extends AsyncTask<String, String, List<AAdharData>> {
+        View view;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -108,7 +111,12 @@ public class WalletFragment2 extends Fragment implements CardAdapter.CardClick {
                 cardAdapter.notifyDataSetChanged();
             }
             else {
-
+                Fragment fragment = new WalletFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         }
     }

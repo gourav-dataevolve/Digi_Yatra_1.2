@@ -74,14 +74,14 @@ public class RetrivedAadharDataActivity extends AppCompatActivity {
         popup = findViewById(R.id.ProcedBtn);
         name = findViewById(R.id.full_name);
 //      lastName = findViewById(R.id.txt_last_name);
-        aadharID = findViewById(R.id.txt_aadhar_id);
+        //aadharID = findViewById(R.id.txt_aadhar_id);
         phone = findViewById(R.id.txt_phone);
         aadharPhoto = findViewById(R.id.img_aadhar);
         customProgressDialog = new CustomProgressDialog(this);
         popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RetrivedAadharDataActivity.this, Alomst_done.class);
+                Intent i = new Intent(RetrivedAadharDataActivity.this, AlmostDoneActivity.class);
                 i.putExtra("aadharData", aadharData);
                 startActivity(i);
             }
@@ -90,7 +90,7 @@ public class RetrivedAadharDataActivity extends AppCompatActivity {
 
     private void getAccessToken(String code) {
         customProgressDialog.show();
-        Call<AccessTokenRoot> call = RetrofitBuilder.create().getAccessToken(code, Const.GRANT_TYPE, Const.CLIENT_ID, Const.CLIENT_SECRETE, Const.REDIRECT_URL);
+        Call<AccessTokenRoot> call = new RetrofitBuilder(Const.BASE_URL_Get_ACCESS_TOKEN).create().getAccessToken(code, Const.GRANT_TYPE, Const.CLIENT_ID, Const.CLIENT_SECRETE, Const.REDIRECT_URL);
         call.enqueue(new Callback<AccessTokenRoot>() {
             @Override
             public void onResponse(Call<AccessTokenRoot> call, Response<AccessTokenRoot> response) {

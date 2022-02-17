@@ -170,7 +170,7 @@ public class PopIssuerDialog extends BottomSheetDialogFragment implements Issuer
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);
+            BaseClass.acceptInvitation(connectionId, "", GlobalApplication.agent);//a5c3233f-fffd-4fb5-89a6-1e8cf9f8fda2   a5c3233f-fffd-4fb5-89a6-1e8cf9f8fda2
         }
     }
 }

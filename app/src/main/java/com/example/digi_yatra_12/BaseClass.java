@@ -343,7 +343,6 @@ public class BaseClass {
     }
 
     //GET CONNECTION RECORD
-    //commented by bl
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static JSONObject getConnection(String connection_id, AriesController agent) {
@@ -386,14 +385,13 @@ public class BaseClass {
 
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();//TODO we are getting this error "org.json.JSONException: No value for results"
         }
 
         Log.d("getConnectionResponse", res_object.toString());
         return res_object;
     }
     //ADD CONN_RECORD TO WALLET
-    //commented by bl
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static JSONObject addContent(String auth, String userID, String contentType, JSONObject content, AriesController agent) {
@@ -422,7 +420,7 @@ public class BaseClass {
 
         try {
             VCWalletController vcwallet = agent.getVCWalletController();
-            res = vcwallet.add(requestEnvelope);     //change by bl
+            res = vcwallet.add(requestEnvelope);
 
             if (res.getError() != null && !res.getError().getMessage().isEmpty()) {
 //                        Log.d("failed to add content: ", res.getError().getMessage());

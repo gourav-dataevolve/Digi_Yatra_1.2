@@ -128,7 +128,6 @@
 
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
         android:layout_width="wrap_content"
@@ -180,7 +179,14 @@
             app:layout_constraintStart_toStartOf="@+id/constraint"
             app:layout_constraintTop_toBottomOf="@id/img_aadhar"
             app:layout_constraintVertical_bias="0.062" />
-        <TextView
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+        <!--<TextView
             android:id="@+id/full_name_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -250,7 +256,7 @@
             android:fontFamily="@font/poppins"
             app:layout_constraintStart_toStartOf="@id/full_name"
             app:layout_constraintTop_toTopOf="@id/txt_phone1"
-            app:layout_constraintBottom_toBottomOf="@id/txt_phone1" />
+            app:layout_constraintBottom_toBottomOf="@id/txt_phone1" />-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_accept"
             android:layout_width="@dimen/_100sdp"
@@ -264,7 +270,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_cancel"
-            app:layout_constraintTop_toBottomOf="@id/txt_phone1"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout1"
             />
 
         <com.google.android.material.button.MaterialButton
@@ -281,7 +287,7 @@
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toStartOf="@id/btn_accept"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_phone1"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout1"
             app:strokeColor="#002E56" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

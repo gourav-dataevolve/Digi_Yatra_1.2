@@ -66,9 +66,15 @@ public class PopAcknowledgementDialogActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (checkBox.isChecked()) {
-                        Intent i = new Intent(PopAcknowledgementDialogActivity.this, AddDataUrlActivity.class);
-                        startActivity(i);
-                        finish();
+                        if (issuersVerifier.getCredentialType().equals("IdentityCredential")) {
+                            Intent i = new Intent(PopAcknowledgementDialogActivity.this, AddDataUrlActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else if (issuersVerifier.getCredentialType().equals("HealthCredential")) {
+                            Intent i = new Intent(PopAcknowledgementDialogActivity.this, AddCredentialsCowinActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
                     }
                 }
             });

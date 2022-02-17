@@ -8,9 +8,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.digi_yatra_12.activities.PopAcknowledgementDialogActivity;
+import com.example.digi_yatra_12.activities.ReviewHealthCredentialsActivity;
 import com.example.digi_yatra_12.fragments.Camera_profile2;
 import com.example.digi_yatra_12.roomDatabase.AadharDatabase;
 import com.example.digi_yatra_12.roomDatabase.ConnectionDB;
@@ -38,7 +40,7 @@ public class MyHandler implements Handler {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @SuppressLint("LongLogTag")
     @Override
-    public void handle(String topic, byte[] message) {
+    public void handle(@NonNull String topic, byte[] message) {
         lastTopic = topic;
         lastMessage = new String(message, StandardCharsets.UTF_8);
 
@@ -58,7 +60,7 @@ public class MyHandler implements Handler {
                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                         myEdit.putString("connection_id", connectionId);
                         myEdit.apply();
-                        myEdit.commit();//Todo why are we saving in shared preference
+                        myEdit.commit();
                         GetConnectionData getConnectionData = new GetConnectionData(connectionId);
                         getConnectionData.execute();
                     }
@@ -140,7 +142,7 @@ public class MyHandler implements Handler {
                                                 "givenName":"Vemula Gourav",                        //key and value both are dynamic in screen 20
                                                 "id":"https://digiyatrafoundation.com/credentialid",  //exclude it
                                                 "idNumber":"xxxxxxxx4234", //aadhar number
-                                                "idType":"aadhar"
+                                                "idType":"aadhar"                                    //TODO recieve vaccinationStatus and fullName for health credentials flow //show these values in screen 66. and after clicking accept button save data in database as we done before
                                     },
                                     "expirationDate":"2100-01-01T19:23:24Z",
                                             "id":"https://digiyatrafoundation.com/credentialid",
@@ -236,11 +238,28 @@ public class MyHandler implements Handler {
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
             if (connectionDB != null) {
-                intent = new Intent(context, Camera_profile2.class);
-                intent.putExtra("json", lastMessage);
-                issuersVerifier = connectionDB.getJson().toString();
-                intent.putExtra("issuersVerifier", issuersVerifier);
-                context.startActivity(intent);
+                String vaccinationStatus = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(lastMessage);
+                    vaccinationStatus = jsonObject.getJSONObject("message").getJSONObject("Message").getJSONArray("credentials~attach").getJSONObject(0)
+                            .getJSONObject("data").getJSONObject("json").getJSONObject("credentialSubject").getString("vaccinationStatus");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (vaccinationStatus == null) {
+                    intent = new Intent(context, Camera_profile2.class);
+                    intent.putExtra("json", lastMessage);
+                    issuersVerifier = connectionDB.getJson().toString();
+                    intent.putExtra("issuersVerifier", issuersVerifier);
+                    context.startActivity(intent);
+                }
+                else {
+                    intent = new Intent(context, ReviewHealthCredentialsActivity.class);
+                    intent.putExtra("json", lastMessage);
+                    issuersVerifier = connectionDB.getJson().toString();
+                    intent.putExtra("issuersVerifier", issuersVerifier);
+                    context.startActivity(intent);
+                }
             }
 
         }

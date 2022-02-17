@@ -10,7 +10,7 @@
         android:label="Home_fragment" />
     <fragment
         android:id="@+id/wallet_fragment2"
-        android:name="com.example.digi_yatra_12.fragments.WalletFragment2"
+        android:name="com.example.digi_yatra_12.fragments.WalletContainerFragment"
         android:label="Wallet_fragment" >
     </fragment>
     <fragment
