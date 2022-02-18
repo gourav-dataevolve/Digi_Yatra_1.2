@@ -46,8 +46,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
-    implementation files('/Users/mac/Downloads/DigiYatra-main/app/src/main/libs/aries-agent-ws.aar')
     implementation 'androidx.databinding:databinding-runtime:4.1.3'
+    implementation files('C:/Users/Master/Downloads/aries-agent-ws.aar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

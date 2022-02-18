@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -56,11 +57,6 @@ public class MyHandler implements Handler {
                     String stateID = jsonObject.getJSONObject("message").getString("StateID");
                     if (type1.equals("post_state") && stateID.equals("completed")) {
                         String connectionId = jsonObject.getJSONObject("message").getJSONObject("Properties").getString("connectionID");
-                        SharedPreferences sharedPreferences = context.getSharedPreferences("digiyatra", context.MODE_PRIVATE);
-                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                        myEdit.putString("connection_id", connectionId);
-                        myEdit.apply();
-                        myEdit.commit();
                         GetConnectionData getConnectionData = new GetConnectionData(connectionId);
                         getConnectionData.execute();
                     }
@@ -209,8 +205,14 @@ public class MyHandler implements Handler {
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
             if (connectionDB != null) {
+                /*SharedPreferences sharedPreferences = context.getSharedPreferences("digiyatra", context.MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putString("connection_id", connectionId);
+                myEdit.apply();
+                myEdit.commit();*/
                 issuersVerifier = connectionDB.getJson().toString();
                 intent = new Intent(context, PopAcknowledgementDialogActivity.class);
+                intent.putExtra("connectionId", connectionId);
                 intent.putExtra("issuer_verifier", issuersVerifier);
                 context.startActivity(intent);
             }
@@ -260,6 +262,9 @@ public class MyHandler implements Handler {
                     intent.putExtra("issuersVerifier", issuersVerifier);
                     context.startActivity(intent);
                 }
+            }
+            else {
+                Toast.makeText(context, "connection not found", Toast.LENGTH_SHORT).show();
             }
 
         }
